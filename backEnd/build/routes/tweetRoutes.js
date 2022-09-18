@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const tweetController_1 = require("../controllers/tweetController");
+const router = (0, express_1.Router)();
+router.get('/:name', tweetController_1.currentUserTweets);
+router.get('/user/:name', tweetController_1.thisUser);
+router.get('/', tweetController_1.getAllTweets);
+router.get('/:id', tweetController_1.getOneTweet);
+router.post('/', tweetController_1.addTweet);
+router.put('/:id', tweetController_1.editTweet);
+router.delete('/:id', tweetController_1.deleteTweet);
+exports.default = router;
