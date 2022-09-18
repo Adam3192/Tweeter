@@ -7,7 +7,7 @@ const DeleteTweet = () => {
   let navigate = useNavigate()
   let params = useParams()
   let id = params._id
-  let loggedIn = localStorage.getItem('myTweetToken')
+  let loggedIn = sessionStorage.getItem('myTweetToken')
 
 
 function handleDelete(id) {

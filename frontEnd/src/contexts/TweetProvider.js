@@ -63,7 +63,7 @@ export const TweetProvider = (props) => {
 
   function addTweet(tweet) {
     let myHeaders = {
-      Authorization: `Bearer ${localStorage.getItem('myTweetToken')}`,
+      Authorization: `Bearer ${sessionStorage.getItem('myTweetToken')}`,
     }
 
     return axios
@@ -76,7 +76,7 @@ export const TweetProvider = (props) => {
 
   function editTweet(tweet) {
     let myHeaders = {
-      Authorization: `Bearer ${localStorage.getItem('myTweetToken')}`,
+      Authorization: `Bearer ${sessionStorage.getItem('myTweetToken')}`,
     }
 
     return axios
@@ -89,7 +89,7 @@ export const TweetProvider = (props) => {
 
   function deleteTweet(id) {
     let myHeaders = {
-      Authorization: `Bearer ${localStorage.getItem('myTweetToken')}`,
+      Authorization: `Bearer ${sessionStorage.getItem('myTweetToken')}`,
     }
 
     axios

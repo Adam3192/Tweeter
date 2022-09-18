@@ -13,7 +13,6 @@ const SignIn = () => {
         event.preventDefault();
         signInUser(username, password).then(() => {
             navigate('/tweeter');
-            // window.location.reload()
         }).catch(error => {
             console.log(error);
             window.alert('Failed login');

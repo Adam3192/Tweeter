@@ -16,7 +16,7 @@ const NavigationBar = () => {
   let [user, setUser] = useState({})
   let [currentTweets, setCurrentTweets] = useState([])
   let { logout } = useContext(UserContext)
-  let loggedIn = localStorage.getItem('myTweetToken')
+  let loggedIn = sessionStorage.getItem('myTweetToken')
   let navigate = useNavigate()
 
   let { getCurrentUser } = useContext(UserContext)
@@ -24,7 +24,6 @@ const NavigationBar = () => {
   useEffect(() => {
     async function fetch() {
       await getCurrentUser().then((response) => {
-        console.log(`current user is ${response}`)
         setUser(response)
       })
     }

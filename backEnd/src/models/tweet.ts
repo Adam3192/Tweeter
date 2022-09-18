@@ -1,10 +1,10 @@
 import { Document, Schema, Model, model } from 'mongoose'
-
+import moment from 'moment';
 
 interface ITweet extends Document {
   name: string
   message: string
-  createdAt: Date
+  createdAt: string
 }
 
 const tweetSchema: Schema = new Schema({
@@ -18,14 +18,9 @@ const tweetSchema: Schema = new Schema({
     required: true,
   },
   createdAt: {
-    type: Date,
-    // allowNull: false,
-    default: Date.now,
+    type: String,
+    default: moment().format("M/D/YYYY, h:mm:ss a")
   }
-//   timestamps: {
-//     createdAt: true,
-//     updatedAt: false,
-//   },
 })
 
 const Tweet: Model<ITweet> = model('Tweet', tweetSchema)

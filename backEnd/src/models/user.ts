@@ -1,4 +1,5 @@
-import { Document, Schema, Model, model } from 'mongoose';
+import { Document, Schema, Model, model, MixedSchemaTypeOptions, Mixed } from 'mongoose';
+import moment from 'moment';
 
 interface IUser extends Document {
     username: string;
@@ -7,7 +8,7 @@ interface IUser extends Document {
     lastName: string;
     city: string;
     state: string;
-    createdAt: Date
+    createdAt: string
 }
 
 const userSchema: Schema = new Schema({
@@ -37,9 +38,8 @@ const userSchema: Schema = new Schema({
         required: true
     },
     createdAt: {
-        type: Date,
-        // allowNull: false,
-        default: Date.now,
+        type: String,
+        default: moment().format("M/D/YYYY, h:mm:ss a")
       }
 });
 

@@ -5,9 +5,10 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import './TweetList.css'
 import UserContext from '../contexts/UserContext'
+import NewPost from './NewPost'
 
 const TweetList = () => {
-  let loggedIn = localStorage.getItem('myTweetToken')
+  let loggedIn = sessionStorage.getItem('myTweetToken')
   let { deleteTweet } = useContext(TweetContext)
   let navigate = useNavigate()
   let [user2, setUser2] = useState({})
@@ -39,8 +40,8 @@ const TweetList = () => {
           <div className="container2">
             <div className="container3">
               <h1>Tweet Feed</h1>
-              {loggedIn ? <Link to="/tweeter/new">Add New Tweet</Link> : ''}
-              {/* <Link to="/tweeter/new">Add New Tweet</Link> */}
+              {/* {loggedIn ? <Link to="/tweeter/new">Add New Tweet</Link> : ''} */}
+              {loggedIn ? <NewPost /> : ''}
               <br></br>
               <br></br>
               <br></br>

@@ -18,9 +18,8 @@ export const UserProvider = (props) => {
 
   function signInUser(username, password) {
     let user = { username, password }
-
     return axios.post(`${baseUrl}/login`, user).then((response) => {
-      localStorage.setItem('myTweetToken', response.data.token)
+      sessionStorage.setItem('myTweetToken', response.data.token)
       return new Promise((resolve) => resolve(response.data))
     })
   }
@@ -37,7 +36,7 @@ export const UserProvider = (props) => {
 
   function getCurrentUser() {
     let reqHeaders = {
-      Authorization: 'Bearer ' + localStorage.getItem('myTweetToken')
+      Authorization: 'Bearer ' + sessionStorage.getItem('myTweetToken')
     }
 
     return axios.get(`${baseUrl}/oneUser`, { headers: reqHeaders }).then((response) => {
@@ -55,11 +54,7 @@ export const UserProvider = (props) => {
   }
 
   async function logout() {
-    await localStorage.removeItem('myTweetToken')
-    // navigate('/tweeter')
-
-    //  <Navigate to="/dashboard"  />
-    // window.location.reload()
+    await sessionStorage.removeItem('myTweetToken')
   }
 
 
