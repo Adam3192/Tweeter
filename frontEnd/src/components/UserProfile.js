@@ -67,6 +67,7 @@ const UserProfile = () => {
                       <h2>{t.name}</h2>
                       <p>{t.message}</p>
                       <p>{t.createdAt}</p>
+                      <div className='container4'>
                       <Form action={`/tweeter/${t._id}`}>
                         <Button
                           className="ml-7"
@@ -77,7 +78,6 @@ const UserProfile = () => {
                         </Button>
                       </Form>
 
-                      {/* <Form onSubmit={handleDelete.bind(this, t._id)} action="/tweeter"> */}
                       <Form onSubmit={handleDelete.bind(this, t._id)}>
                         <Button
                           className="ml-7"
@@ -88,15 +88,8 @@ const UserProfile = () => {
                           Delete
                         </Button>
                       </Form>
-                      {/* <Link className="margin" to={`/tweeter/${t._id}`}>
-                        Edit Tweet
-                      </Link> */}
-                      {/* <button
-                        onClick={handleDelete.bind(this, t._id)}
-                        className="margin"
-                      >
-                        Delete Tweet
-                      </button> */}
+                      </div>
+                
                     </div>
                     <p>{t.description}</p>
                     <br></br>

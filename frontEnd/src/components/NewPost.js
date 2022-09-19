@@ -9,9 +9,9 @@ const NewPost = () => {
   let [user, setUser] = useState({})
   let loggedIn = sessionStorage.getItem('myTweetToken')
   let navigate = useNavigate()
-  const [name, setName] = useState({});
-  const [message, setMessage] = useState("");
-  
+  const [name, setName] = useState({})
+  const [message, setMessage] = useState('')
+
   useEffect(() => {
     async function fetch() {
       await getCurrentUser().then((response) => {
@@ -20,17 +20,9 @@ const NewPost = () => {
         console.log(`monday 19 response is ${response}`)
       })
     }
-    
+
     fetch()
   }, [])
-  
-
-  console.log(`monday 19, username is ${user.username}`)
-
-  // let [newTweet, setNewTweet] = useState({
-  //   name: 'Adam',
-  //   message: '',
-  // })
 
   // function handleChange(event) {
   //   setNewTweet((prevValue) => {
@@ -41,11 +33,10 @@ const NewPost = () => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(`monday 19, new tweet is ${message}`)
     addTweet(name.username, message)
       .then((response) => {
-        navigate('/tweeter')
-        console.log(`monday 19, response is ${response}`)
+        window.location.reload()
+        // navigate('/tweeter')
       })
       .catch((error) => {
         console.log(error)
@@ -54,17 +45,18 @@ const NewPost = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="New tweet"
-        type="text"
-        name="message"
-        // value={newTweet.message}
-        // onChange={handleChange}
-        onChange={e => setMessage(e.target.value)}
-      />
-      <button>Post!</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="New tweet"
+          type="text"
+          name="message"
+          // value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button type='submit' className='ml-10'>Post!</button>
+      </form>
+    </div>
   )
 }
 

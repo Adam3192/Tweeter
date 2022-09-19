@@ -1,9 +1,7 @@
 .container {
   display: flex;
   justify-content: space-between;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr; */
-
+  align-items: center;
 }
 
 .gridItem1 {
@@ -33,6 +31,7 @@ p {
 }
 
 .tweet {
+  display: flex;
   width: 75vw;
   border: 7px solid rgb(0, 174, 255);
   margin: 2vh;
@@ -52,4 +51,12 @@ p {
   width: 75vw;
   align-items: flex-start;
   padding-top: 5vh;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.container4 {
+  display: flex;
 }
