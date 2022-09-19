@@ -11,7 +11,6 @@ const tweetSchema: Schema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   message: {
     type: String,

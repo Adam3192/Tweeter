@@ -1,44 +1,51 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import TweetContext from '../contexts/TweetContext'
+import UserContext from '../contexts/UserContext'
 
 const NewPost = () => {
-  let params = useParams()
   let { addTweet, getTweet } = useContext(TweetContext)
-  let [timeCreated, setTimeCreated] = useState()
-  var timeNow = new Date().getTime();
-  
-  let [newTweet, setNewTweet] = useState({
-    //update these properties after I define my models in the database!!
-    id: params._id,
-    name: '',
-    message: '',
-    createdAt: ''
-  })
-
+  let { getCurrentUser } = useContext(UserContext)
+  let [user, setUser] = useState({})
+  let loggedIn = sessionStorage.getItem('myTweetToken')
   let navigate = useNavigate()
-  let { id, name, message, createdAt } = newTweet
-
+  const [name, setName] = useState({});
+  const [message, setMessage] = useState("");
+  
   useEffect(() => {
-    if (id === undefined) return
     async function fetch() {
-      await getTweet(id).then((tweet) => setNewTweet(tweet))
+      await getCurrentUser().then((response) => {
+        setName(response)
+        // setName(response.data.username)
+        console.log(`monday 19 response is ${response}`)
+      })
     }
+    
     fetch()
-  }, [id])
+  }, [])
+  
 
-  function handleChange(event) {
-    setNewTweet((prevValue) => {
-      return { ...prevValue, [event.target.name]: event.target.value }
-    })
-  }
+  console.log(`monday 19, username is ${user.username}`)
+
+  // let [newTweet, setNewTweet] = useState({
+  //   name: 'Adam',
+  //   message: '',
+  // })
+
+  // function handleChange(event) {
+  //   setNewTweet((prevValue) => {
+  //     return { ...prevValue, [event.target.name]: event.target.value }
+  //     return { [event.target.name]: event.target.value }
+  //   })
+  // }
 
   function handleSubmit(event) {
     event.preventDefault()
-    addTweet(newTweet)
+    console.log(`monday 19, new tweet is ${message}`)
+    addTweet(name.username, message)
       .then((response) => {
-        setTimeCreated(response.createdAt)
         navigate('/tweeter')
+        console.log(`monday 19, response is ${response}`)
       })
       .catch((error) => {
         console.log(error)
@@ -49,22 +56,14 @@ const NewPost = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        placeholder="Enter tweet name"
-        type="text"
-        name="name"
-        value={newTweet.name}
-        onChange={handleChange}
-      />
-      <br></br>
-      <br></br>
-      <input
-        placeholder="Enter message"
+        placeholder="New tweet"
         type="text"
         name="message"
-        value={newTweet.message}
-        onChange={handleChange}
+        // value={newTweet.message}
+        // onChange={handleChange}
+        onChange={e => setMessage(e.target.value)}
       />
-      <button>Post Tweet!</button>
+      <button>Post!</button>
     </form>
   )
 }

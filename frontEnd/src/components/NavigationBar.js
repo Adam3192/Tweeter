@@ -14,7 +14,6 @@ import './NavigationBar.css'
 
 const NavigationBar = () => {
   let [user, setUser] = useState({})
-  let [currentTweets, setCurrentTweets] = useState([])
   let { logout } = useContext(UserContext)
   let loggedIn = sessionStorage.getItem('myTweetToken')
   let navigate = useNavigate()

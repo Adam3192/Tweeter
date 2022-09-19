@@ -61,11 +61,11 @@ export const TweetProvider = (props) => {
 
 
 
-  function addTweet(tweet) {
+  function addTweet(name, message) {
     let myHeaders = {
       Authorization: `Bearer ${sessionStorage.getItem('myTweetToken')}`,
     }
-
+    let tweet = { name, message }
     return axios
       .post(baseUrl, tweet, { headers: myHeaders })
       .then((response) => {
