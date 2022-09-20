@@ -23,7 +23,7 @@ const addTweet = async (req, res, next) => {
     const newTweet = new tweet_1.Tweet({
         name: req.body.name,
         message: req.body.message,
-        // createdAt: req.body.createdAt
+        createdAt: req.body.createdAt
     });
     try {
         await newTweet.save();

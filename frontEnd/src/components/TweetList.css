@@ -33,7 +33,7 @@ p {
 .tweet {
   display: flex;
   width: 75vw;
-  border: 7px solid rgb(0, 174, 255);
+  border: 4px solid rgb(0, 174, 255);
   margin: 2vh;
   padding: 1vh;
   border-radius: 7px;
@@ -59,4 +59,29 @@ p {
 
 .container4 {
   display: flex;
+}
+
+.style1 {
+  width: 306px;
+  padding-left: 10px;
+  padding-top: 13px;
+  border: 1px solid black;
+  border-radius: 7px;
+}
+
+.style2 {
+  width: 75px;
+  height: 36px;
+  color: black;
+  background-color: #01c4ff;
+}
+
+.container5 {
+  display: flex;
+  align-items: flex-end;
+}
+
+.style3 {
+  font-size: 20px;
+  font-weight: 600;
 }

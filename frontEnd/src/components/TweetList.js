@@ -52,7 +52,7 @@ const TweetList = () => {
                 return (
                   <div className="tweet" key={t.id}>
                     <div className="container">
-                      <h2 className="gridItem1">{t.message}</h2>
+                      <p className="style3">{t.message}</p>
                       <div>
                         <Link className='gridItem2' to={`/tweeter/user2/${t.name}`}>{t.name}</Link>
                         <p className="gridItem3">{t.createdAt}</p>

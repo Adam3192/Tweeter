@@ -25,7 +25,7 @@ export const addTweet: RequestHandler = async (req, res, next) => {
     const newTweet: ITweet = new Tweet({
         name: req.body.name,
         message: req.body.message,
-        // createdAt: req.body.createdAt
+        createdAt: req.body.createdAt
     });
 
     try {

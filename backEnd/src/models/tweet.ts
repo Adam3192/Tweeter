@@ -18,7 +18,8 @@ const tweetSchema: Schema = new Schema({
   },
   createdAt: {
     type: String,
-    default: moment().format("M/D/YYYY, h:mm:ss a")
+    required: true
+    // default: moment().format("M/D/YYYY, h:mm:ss a")
   }
 })
 
