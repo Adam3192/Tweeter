@@ -1,32 +1,32 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import TweetContext from '../contexts/TweetContext'
+import Button from 'react-bootstrap/Button'
+import moment from 'moment'
 
 const EditTweet = () => {
   let params = useParams()
   let [editedTweet, setEditedTweet] = useState({
-    id: params._id,
+    id: '',
     name: '',
-    description: '',
-    price: 0,
+    message: '',
   })
+  
+  const [id, setId] = useState(params._id)
+  const [name, setName] = useState(editedTweet.name)
+  const [message, setMessage] = useState('')
+  const [updatedAt, setUpdatedAt] = useState(moment().format('M/D/YYYY, h:mm:ss a'))
 
   let { editTweet, getTweet } = useContext(TweetContext)
   let navigate = useNavigate()
-  let { id, name, message, createdAt } = editedTweet
-  // let id = params._id
 
   useEffect(() => {
-    if (id === undefined) return
+    if (params._id === undefined) return
     async function fetch() {
-      await getTweet(id).then((tweet) => setEditedTweet(tweet))
+      await getTweet(params._id).then((tweet) => setEditedTweet(tweet))
     }
     fetch()
-  }, [id])
-
-//   useEffect(() => {
-//     getTweet(tweet._id)
-//   }, [])
+  }, [params._id])
 
   function handleChange(event) {
     setEditedTweet((prevValue) => {
@@ -36,7 +36,7 @@ const EditTweet = () => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    editTweet(editedTweet)
+    editTweet(id, name, message, updatedAt)
       .then(() => {
         navigate('/tweeter')
       })
@@ -47,28 +47,24 @@ const EditTweet = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>EDIT TWEET</h1>
-      <span>Username </span>
-      <input
-        type="text"
-        name="name"
-        value={name}
-        onChange={handleChange}
-      />
-      <br></br>
-      <br></br>
-      <span>Message </span>
-      <input
-        type="text"
-        name="message"
-        value={message}
-        onChange={handleChange}
-      />
-      <br></br>
-      <br></br>
-      <button>Edit Tweet</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="container5">
+          <textarea
+            className="style1"
+            type="text"
+            name="message"
+            value={editedTweet.message}
+            // onChange={(e) => setMessage(e.target.value)}
+            onChange={(e) => {
+              setMessage(e.target.value)
+              setEditedTweet(e.target.value)
+            }}
+          />
+          <Button type='submit' className="style2 ml-10"  variant="info">Update</Button>
+        </div>
+      </form>
+    </div>
   )
 }
 

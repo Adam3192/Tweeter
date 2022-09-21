@@ -6,7 +6,7 @@ const router = Router();
 router.get('/:name', currentUserTweets);
 router.get('/user/:name', thisUser);
 router.get('/', getAllTweets);
-router.get('/:id', getOneTweet);
+router.get('/tweet/:id', getOneTweet);
 router.post('/', addTweet);
 router.put('/:id', editTweet);
 router.delete('/:id', deleteTweet);

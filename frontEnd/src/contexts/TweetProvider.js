@@ -26,7 +26,7 @@ export const TweetProvider = (props) => {
 
   function getTweet(id) {
     return axios
-      .get(baseUrl + id)
+      .get(`http://localhost:3000/tweeter/tweet/${id}`)
       .then((response) => new Promise((resolve) => resolve(response.data)))
       .catch(
         (error) => new Promise((_, reject) => reject(error.response.statusText))
@@ -74,13 +74,15 @@ export const TweetProvider = (props) => {
       })
   }
 
-  function editTweet(tweet) {
+  function editTweet(id, name, message, updatedAt) {
     let myHeaders = {
       Authorization: `Bearer ${sessionStorage.getItem('myTweetToken')}`,
     }
 
+    let tweet = { id, name, message, updatedAt }
+
     return axios
-      .put(baseUrl + tweet._id, tweet, { headers: myHeaders })
+      .put(baseUrl + tweet.id, tweet, { headers: myHeaders })
       .then((response) => {
         getAllTweets()
         return new Promise((resolve) => resolve(response.data))

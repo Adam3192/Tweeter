@@ -11,6 +11,7 @@ export const getAllTweets: RequestHandler = async (req, res, next) => {
 
 export const getOneTweet: RequestHandler = async (req, res, next) => {
     let itemId = req.params.id;
+    console.log(`wednesday 21, this tweet id is ${itemId}`)
     let tweet = await Tweet.findById(itemId);
     res.status(200).json(tweet);
 }
@@ -45,12 +46,11 @@ export const editTweet: RequestHandler = async (req, res, next) => {
         return res.status(403).send();
     }
 
-    let itemId = req.params.id;
+    let itemId = req.params._id;
     const updatedTweet: ITweet = new Tweet({
-        _id: itemId,
         name: req.body.name,
         message: req.body.message,
-        // price: req.body.price
+        createdAt: req.body.updatedAt,
     });
 
     await Tweet.findByIdAndUpdate(itemId, { $set: updatedTweet })
