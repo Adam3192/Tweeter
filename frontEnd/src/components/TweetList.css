@@ -33,7 +33,7 @@ p {
 .tweet {
   display: flex;
   width: 75vw;
-  border: 4px solid rgb(0, 174, 255);
+  border: 4px solid #888098;
   margin: 2vh;
   padding: 1vh;
   border-radius: 7px;
@@ -72,8 +72,8 @@ p {
 .style2 {
   width: 75px;
   height: 36px;
-  color: black;
-  background-color: #01c4ff;
+  color: white !important;
+  background-color: #266dd3 !important;
 }
 
 .container5 {

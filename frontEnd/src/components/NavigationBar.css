@@ -2,3 +2,11 @@
  display: flex;
  align-items: center;
 }
+
+.color {
+ color: white !important;
+}
+
+a:hover {
+ color: #DFC2F2 !important;
+}

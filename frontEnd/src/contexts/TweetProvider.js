@@ -5,6 +5,9 @@ import TweetContext from './TweetContext'
 
 export const TweetProvider = (props) => {
 
+  let params = useParams()
+
+
   const [tweet, setTweet] = useState([])
   const [currentUserTweets, setCurrentUserTweets] = useState([])
   const [thisUser, setThisUser] = useState([])
@@ -74,15 +77,15 @@ export const TweetProvider = (props) => {
       })
   }
 
-  function editTweet(id, name, message, updatedAt) {
+  function editTweet( name, message, updatedAt, id) {
     let myHeaders = {
       Authorization: `Bearer ${sessionStorage.getItem('myTweetToken')}`,
     }
-
-    let tweet = { id, name, message, updatedAt }
+    let tweet = { name, message, updatedAt }
+    console.log(`thursday 22, params id is ${id}`)
 
     return axios
-      .put(baseUrl + tweet.id, tweet, { headers: myHeaders })
+      .put(baseUrl + id, tweet, { headers: myHeaders })
       .then((response) => {
         getAllTweets()
         return new Promise((resolve) => resolve(response.data))

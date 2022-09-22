@@ -32,63 +32,49 @@ const NavigationBar = () => {
 
   return (
     <div>
-      <Navbar className="color" bg="" variant="">
+      <Navbar className="color" variant="">
         <Container>
-          <Navbar.Brand className="marginRight center" href="/">
+          <Navbar.Brand className="marginRight center color" href="/">
             <img alt="" src={Image} className="d-inline-block align-top" />{' '}
             Tweeter
           </Navbar.Brand>
           <Nav className="me-auto">
             {!loggedIn ? (
-              <Link to="/signin" className="nav-link">
+              <Link to="/signin" className="nav-link color">
                 Sign In
               </Link>
             ) : (
               ''
             )}
             {!loggedIn ? (
-              <Link to="/signup" className="nav-link">
+              <Link to="/signup" className="nav-link color">
                 Sign Up
               </Link>
             ) : (
               ''
             )}
             {loggedIn ? (
-              <Link to={`/tweeter/user/${user.username}`} className="nav-link">
+              <Link to={`/tweeter/user/${user.username}`} className="nav-link color">
                 {`Welcome, ${user.firstName} ${user.lastName}!`}
               </Link>
             ) : (
               ''
             )}
             {loggedIn ? (
-              <Link  to={`/tweeter/user/${user.username}`} className="nav-link">
+              <Link  to={`/tweeter/user/${user.username}`} className="nav-link color">
                 View Profile
               </Link>
             ) : (
               ''
             )}
-            {/* {loggedIn ? (
-           <Link onClick={navigation() } to="/" className="nav-link">
-             Logout
-           </Link>
-         ) : (
-           ''
-         )} */}
-            {/* {loggedIn ? (
-           <Link onClick={logout && <Navigate to="/tweeter"   /> } to="/" className="nav-link">
-             Logout
-           </Link>
-         ) : (
-           ''
-         )} */}
             {loggedIn ? (
-              <Link onClick={logout} to="/" className="nav-link">
+              <Link onClick={logout} to="/" className="nav-link color">
                 Logout
               </Link>
             ) : (
               ''
             )}
-            <Link to="/" className="nav-link">
+            <Link to="/" className="nav-link color">
               All Tweets
             </Link>
           </Nav>

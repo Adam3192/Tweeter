@@ -46,8 +46,10 @@ export const editTweet: RequestHandler = async (req, res, next) => {
         return res.status(403).send();
     }
 
-    let itemId = req.params._id;
+    let itemId = req.params.id;
+    
     const updatedTweet: ITweet = new Tweet({
+        _id: itemId,
         name: req.body.name,
         message: req.body.message,
         createdAt: req.body.updatedAt,
