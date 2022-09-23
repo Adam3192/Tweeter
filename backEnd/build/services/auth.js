@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.verifyUser2 = exports.verifyUser = exports.signUserToken = exports.comparePasswords = exports.hashPassword = void 0;
+exports.verifyUser2 = exports.findUsers = exports.verifyUser = exports.signUserToken = exports.comparePasswords = exports.hashPassword = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const user_1 = require("../models/user");
@@ -40,6 +40,23 @@ const verifyUser = async (req) => {
     }
 };
 exports.verifyUser = verifyUser;
+const findUsers = async (req) => {
+    const authHeader = req.headers.authorization;
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+        try {
+            let decoded = await jsonwebtoken_1.default.verify(token, secret);
+            return await user_1.User.findById(decoded.userId);
+        }
+        catch (err) {
+            return null;
+        }
+    }
+    else {
+        return null;
+    }
+};
+exports.findUsers = findUsers;
 const verifyUser2 = async (req) => {
     const authHeader = req.headers.authorization;
     console.log(`this request is ${req.headers}`);

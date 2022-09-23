@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 import { User, IUser } from "../models/user";
-import { comparePasswords, hashPassword, signUserToken, verifyUser, verifyUser2 } from "../services/auth";
+import { comparePasswords, hashPassword, signUserToken, verifyUser, findUsers, verifyUser2 } from "../services/auth";
 
 export const createUser: RequestHandler = async (req, res, next) => {
     const newUser: IUser = new User({
@@ -62,9 +62,14 @@ export const getCurrentUser: RequestHandler = async (req, res, next) => {
     }
 }
 
+export const searchUsers: RequestHandler = async (req, res, next) => {
+    let searchInput = req.headers.authorization;
+    let searchResult = await User.find({ username: searchInput });
+    res.status(200).json(searchResult);
+}
+
 export const thisUser: RequestHandler = async (req, res, next) => {
     let name = req.params.name;
-    console.log(`user variable is ${name}`)
     let thisUser = await User.find({ username: name });
     res.status(200).json(thisUser);
 }

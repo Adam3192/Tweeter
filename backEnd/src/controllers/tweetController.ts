@@ -11,7 +11,6 @@ export const getAllTweets: RequestHandler = async (req, res, next) => {
 
 export const getOneTweet: RequestHandler = async (req, res, next) => {
     let itemId = req.params.id;
-    console.log(`wednesday 21, this tweet id is ${itemId}`)
     let tweet = await Tweet.findById(itemId);
     res.status(200).json(tweet);
 }
@@ -81,7 +80,6 @@ export const thisUser: RequestHandler = async (req, res, next) => {
 
 export const currentUserTweets: RequestHandler = async (req, res, next) => {
     let name = req.params.name
-    console.log(`tweet variable is ${name}`)
     let tweet = await Tweet.find({ name: name });
     res.status(200).json(tweet);
 }

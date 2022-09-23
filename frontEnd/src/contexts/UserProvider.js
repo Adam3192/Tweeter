@@ -28,7 +28,6 @@ export const UserProvider = (props) => {
     return axios
       .get(`http://localhost:3000/tweeter/user/${name}`)
       .then((response) => {
-        console.log(`response is ${response.data}`)
         setThisUser(response.data)
         return new Promise((resolve) => resolve(response.data))
       })
@@ -38,12 +37,22 @@ export const UserProvider = (props) => {
     let reqHeaders = {
       Authorization: 'Bearer ' + sessionStorage.getItem('myTweetToken')
     }
-
+    
     return axios.get(`${baseUrl}/oneUser`, { headers: reqHeaders }).then((response) => {
-      console.log(`this user is ${response.data.username}`)
       return new Promise((resolve) => resolve(response.data))
     } );
-
+    
+  }
+  
+  function searchUsers(search) {
+    let reqHeaders = {
+      Authorization: search
+    }
+    return axios
+      .get(`${baseUrl}/searchUsers`, { headers: reqHeaders } )
+      .then((response) => {
+        return new Promise((resolve) => resolve(response.data))
+      })
   }
 
   function getCurrentUser2() {
@@ -67,6 +76,7 @@ export const UserProvider = (props) => {
         getCurrentUser2,
         logout,
         getThisUser,
+        searchUsers,
         thisUser
       }}
     >

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCurrentUser2 = exports.thisUser = exports.getCurrentUser = exports.loginUser = exports.createUser = void 0;
+exports.getCurrentUser2 = exports.thisUser = exports.searchUsers = exports.getCurrentUser = exports.loginUser = exports.createUser = void 0;
 const user_1 = require("../models/user");
 const auth_1 = require("../services/auth");
 const createUser = async (req, res, next) => {
@@ -58,9 +58,14 @@ const getCurrentUser = async (req, res, next) => {
     }
 };
 exports.getCurrentUser = getCurrentUser;
+const searchUsers = async (req, res, next) => {
+    let searchInput = req.headers.authorization;
+    let searchResult = await user_1.User.find({ username: searchInput });
+    res.status(200).json(searchResult);
+};
+exports.searchUsers = searchUsers;
 const thisUser = async (req, res, next) => {
     let name = req.params.name;
-    console.log(`user variable is ${name}`);
     let thisUser = await user_1.User.find({ username: name });
     res.status(200).json(thisUser);
 };

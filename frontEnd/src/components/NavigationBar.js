@@ -30,6 +30,12 @@ const NavigationBar = () => {
     fetch()
   }, [loggedIn])
 
+  // const handleChange = (e) => {
+  //   if (e.target.value === '') return
+  //   e.preventDefault()
+  //   navigate(`${e.target.value}/search`)
+  // }
+
   return (
     <div>
       <Navbar className="color" variant="">
@@ -77,11 +83,14 @@ const NavigationBar = () => {
             <Link to="/" className="nav-link color">
               All Tweets
             </Link>
+            <Link to="/search" className="nav-link color">
+              Search Users
+            </Link>
           </Nav>
         </Container>
         {/* <Form className="me-4">
        <FormControl
-         //   onChange={handleChange}
+         onChange={handleChange}
          type="search"
          className="me-4"
          placeholder="Search"

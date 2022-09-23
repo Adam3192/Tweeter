@@ -43,6 +43,25 @@ export const verifyUser = async (req: Request) => {
     }
 }
 
+export const findUsers = async (req: Request) => {
+    const authHeader = req.headers.authorization;
+
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+
+        try {
+            let decoded: any = await jwt.verify(token, secret);
+            return await User.findById(decoded.userId);
+        }
+        catch (err) {
+            return null;
+        }
+    }
+    else {
+        return null;
+    }
+}
+
 export const verifyUser2 = async (req: Request) => {
     const authHeader = req.headers.authorization;
     console.log(`this request is ${req.headers}`)

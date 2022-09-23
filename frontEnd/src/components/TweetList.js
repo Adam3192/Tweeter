@@ -45,7 +45,6 @@ const TweetList = () => {
               <br></br>
               <br></br>
               <br></br>
-              {console.log(tweet)}
             </div>
             <div>
               {tweet.map((t) => {

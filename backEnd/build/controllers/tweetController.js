@@ -11,7 +11,6 @@ const getAllTweets = async (req, res, next) => {
 exports.getAllTweets = getAllTweets;
 const getOneTweet = async (req, res, next) => {
     let itemId = req.params.id;
-    console.log(`wednesday 21, this tweet id is ${itemId}`);
     let tweet = await tweet_1.Tweet.findById(itemId);
     res.status(200).json(tweet);
 };
@@ -71,7 +70,6 @@ const thisUser = async (req, res, next) => {
 exports.thisUser = thisUser;
 const currentUserTweets = async (req, res, next) => {
     let name = req.params.name;
-    console.log(`tweet variable is ${name}`);
     let tweet = await tweet_1.Tweet.find({ name: name });
     res.status(200).json(tweet);
 };
