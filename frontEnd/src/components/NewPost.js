@@ -57,13 +57,6 @@ const NewPost = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {/* <input
-          placeholder="New tweet"
-          type="text"
-          name="message"
-          // value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        /> */}
         <div className="container5">
           <textarea
             className="style1"

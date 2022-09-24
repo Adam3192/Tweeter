@@ -1,22 +1,24 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import UserContext from '../contexts/UserContext'
 
 const SearchUsers = () => {
-  let { searchUsers, getAllUsers } = useContext(UserContext)
-  let [users, setUsers] = useState([])
+  let navigate = useNavigate()
+  let { searchUsers } = useContext(UserContext)
+  let [users, setUsers] = useState(null)
   let [search, setSearch] = useState('')
+  const test = users
 
   useEffect(() => {
-    async function getUsers() {
-      await getAllUsers().then((response) => {
+    async function getUser() {
+      await searchUsers(search).then((response) => {
         setUsers(response)
       })
     }
 
-    getUsers()
-  }, [])
+    getUser()
+  }, [search])
 
   const handleChange = (e) => {
     if (e.target.value === '') return
@@ -40,21 +42,17 @@ const SearchUsers = () => {
           </Button>
         </div>
       </form>
-      {/* {users.filter((index) => {
-        if (search == '') {
-          return <p>No matching users found</p>
-        } else if (
-          index.username.toLowerCase().includes(search.toLowerCase())
-        ) {
+      {(test !== null) ? (
+        users.map((u) => {
           return (
-            <div className="tweet" key={index._id}>
+            <div className="tweet" key={u._id}>
               <div className="container">
-                <p className="style3">{index.username}</p>
-                <p className="style3">{`${index.firstName} ${index.lastName}`}</p>
+                <p className="style3">{u.username}</p>
+                <p className="style3">{`${u.firstName} ${u.lastName}`}</p>
                 <div>
                   <Link
                     className="gridItem2"
-                    to={`/tweeter/user2/${index.username}`}
+                    to={`/tweeter/user2/${u.username}`}
                   >
                     View Profile
                   </Link>
@@ -63,8 +61,10 @@ const SearchUsers = () => {
               <br></br>
             </div>
           )
-        }
-      })} */}
+        })
+      ) : (
+         <p>No matching users found</p>
+      )}
     </div>
   )
 }

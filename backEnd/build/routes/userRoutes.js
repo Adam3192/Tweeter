@@ -9,4 +9,5 @@ router.get('/oneUser', userController_1.getCurrentUser);
 router.get('/thisUser', userController_1.getCurrentUser2);
 router.get('/Batman', userController_1.thisUser);
 router.get('/searchUsers', userController_1.searchUsers);
+router.get('/allUsers', userController_1.getAllUsers);
 exports.default = router;

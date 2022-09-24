@@ -61,6 +61,12 @@ export const UserProvider = (props) => {
     } );
   }
 
+  function getAllUsers() {
+    return axios.get(`${baseUrl}/allUsers`).then((response) => {
+      return new Promise((resolve) => resolve(response.data))
+    } );
+  }
+
   async function logout() {
     await sessionStorage.removeItem('myTweetToken')
   }
@@ -76,6 +82,7 @@ export const UserProvider = (props) => {
         logout,
         getThisUser,
         searchUsers,
+        getAllUsers,
         thisUser
       }}
     >

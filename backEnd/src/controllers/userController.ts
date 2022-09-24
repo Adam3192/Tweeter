@@ -84,4 +84,8 @@ export const getCurrentUser2: RequestHandler = async (req, res, next) => {
     }
 }
 
+export const getAllUsers: RequestHandler = async (req, res, next) => {
+    let allUsers = await User.find();
+    res.status(200).json(allUsers);
+}
 
