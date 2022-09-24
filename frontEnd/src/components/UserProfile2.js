@@ -18,7 +18,6 @@ const UserProfile2 = () => {
   useEffect(() => {
     async function fetch() {
       await getCurrentUser2().then((response) => {
-        console.log(response)
         setUser(response)
       })
     }

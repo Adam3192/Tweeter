@@ -19,8 +19,6 @@ const NewPost = () => {
     async function fetch() {
       await getCurrentUser().then((response) => {
         setName(response)
-        // setName(response.data.username)
-        console.log(`monday 19 response is ${response}`)
       })
     }
 

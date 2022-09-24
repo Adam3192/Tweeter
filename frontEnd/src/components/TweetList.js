@@ -17,7 +17,6 @@ const TweetList = () => {
   useEffect(() => {
     async function fetch() {
       await getCurrentUser2().then((response) => {
-        console.log(`current user is ${response}`)
         setUser2(response)
       })
     }

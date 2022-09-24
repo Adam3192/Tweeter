@@ -63,7 +63,6 @@ const deleteTweet = async (req, res, next) => {
 exports.deleteTweet = deleteTweet;
 const thisUser = async (req, res, next) => {
     let name = req.params.name;
-    console.log(`user variable is ${name}`);
     let thisUser = await user_1.User.find({ username: name });
     res.status(200).json(thisUser);
 };

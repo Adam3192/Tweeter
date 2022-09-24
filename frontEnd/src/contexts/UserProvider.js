@@ -57,7 +57,6 @@ export const UserProvider = (props) => {
 
   function getCurrentUser2() {
     return axios.get(`${baseUrl}/thisUser`).then((response) => {
-      console.log(`this user is ${response.data.username}`)
       return new Promise((resolve) => resolve(response.data))
     } );
   }

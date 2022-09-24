@@ -40,7 +40,6 @@ export const TweetProvider = (props) => {
     return axios
       .get(baseUrl + name)
       .then((response) => {
-        console.log(`response is ${response.data}`)
         setCurrentUserTweets(response.data)
         return new Promise((resolve) => resolve(response.data))
       })
@@ -50,19 +49,10 @@ export const TweetProvider = (props) => {
     return axios
       .get(`http://localhost:3000/tweeter/user/${name}`)
       .then((response) => {
-        console.log(`response is ${response.data}`)
         setThisUser(response.data)
         return new Promise((resolve) => resolve(response.data))
       })
   }
-
-  let { username } = thisUser;
-  console.log(username)
-  console.log(thisUser);
-  console.log(currentUserTweets);
-  // console.log(Object.values(thisUser));
-
-
 
   function addTweet(name, message, createdAt) {
     let myHeaders = {
@@ -82,7 +72,6 @@ export const TweetProvider = (props) => {
       Authorization: `Bearer ${sessionStorage.getItem('myTweetToken')}`,
     }
     let tweet = { name, message, updatedAt }
-    console.log(`thursday 22, params id is ${id}`)
 
     return axios
       .put(baseUrl + id, tweet, { headers: myHeaders })
@@ -104,7 +93,6 @@ export const TweetProvider = (props) => {
       })
       .catch((error) => {
         console.log(error)
-        // navigate('/signin')
       })
   }
 

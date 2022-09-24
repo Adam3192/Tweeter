@@ -18,7 +18,6 @@ const UserProfile = () => {
   useEffect(() => {
     async function fetch() {
       await getCurrentUser().then((response) => {
-        console.log(response)
         setUser(response)
       })
     }
@@ -27,7 +26,6 @@ const UserProfile = () => {
     async function tweetList() {
 
       await getUserTweets(params.name).then((response) => {
-        // console.log(`current user is ${response}`)
         setCurrentTweets(response)
       })
     }

@@ -64,7 +64,6 @@ export const findUsers = async (req: Request) => {
 
 export const verifyUser2 = async (req: Request) => {
     const authHeader = req.headers.authorization;
-    console.log(`this request is ${req.headers}`)
 
     if (authHeader) {
         const token = authHeader.split(' ')[1];

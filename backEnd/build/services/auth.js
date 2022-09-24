@@ -59,7 +59,6 @@ const findUsers = async (req) => {
 exports.findUsers = findUsers;
 const verifyUser2 = async (req) => {
     const authHeader = req.headers.authorization;
-    console.log(`this request is ${req.headers}`);
     if (authHeader) {
         const token = authHeader.split(' ')[1];
         try {

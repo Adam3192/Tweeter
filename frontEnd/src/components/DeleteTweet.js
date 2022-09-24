@@ -21,14 +21,6 @@ function handleDelete(id) {
       })
     : navigate('/signin')
 
-  // deleteTweet(id)
-  //  .then(() => {
-  //    getAllTweets()
-  //  })
-  //  .catch((error) => {
-  //    console.log(error)
-  //    navigate('/signin')
-  //  })
 }
 
 export default DeleteTweet

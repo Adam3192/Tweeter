@@ -73,7 +73,6 @@ export const deleteTweet: RequestHandler = async (req, res, next) => {
 
 export const thisUser: RequestHandler = async (req, res, next) => {
     let name = req.params.name;
-    console.log(`user variable is ${name}`)
     let thisUser = await User.find({ username: name });
     res.status(200).json(thisUser);
 }
