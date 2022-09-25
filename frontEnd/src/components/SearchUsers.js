@@ -2,11 +2,12 @@ import React, { useContext, useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import UserContext from '../contexts/UserContext'
+import './SearchUsers.css'
 
 const SearchUsers = () => {
   let { searchUsers, getAllUsers } = useContext(UserContext)
   let [users, setUsers] = useState([])
-  let [search, setSearch] = useState('')
+  let [search, setSearch] = useState('   ')
 
   useEffect(() => {
     async function getUsers() {
@@ -25,7 +26,7 @@ const SearchUsers = () => {
   }
 
   return (
-    <div>
+    <div className='container6'>
       <h1>Search Users</h1>
       <form>
         <div className="container5">
@@ -35,26 +36,34 @@ const SearchUsers = () => {
             name="message"
             onChange={handleChange}
           />
-          <Button type="submit" className="style2 ml-10" variant="info">
+          <Button className="style2 ml-10" variant="info">
             Search
           </Button>
         </div>
       </form>
-      {/* {users.filter((index) => {
-        if (search == '') {
-          return <p>No matching users found</p>
-        } else if (
-          index.username.toLowerCase().includes(search.toLowerCase())
-        ) {
+      {users
+        .filter((user) => {
+          if (search == null) return (<p>No matching users found</p>);
+          else if (user.username.toLowerCase().includes(search.toLowerCase())) {
+            return user
+          }
+          else if (user.lastName.toLowerCase().includes(search.toLowerCase())) {
+            return user
+          }
+          else if (user.firstName.toLowerCase().includes(search.toLowerCase())) {
+            return user
+          }
+        })
+        .map((user, key) => {
           return (
-            <div className="tweet" key={index._id}>
+            <div className="tweet" key={key}>
               <div className="container">
-                <p className="style3">{index.username}</p>
-                <p className="style3">{`${index.firstName} ${index.lastName}`}</p>
+                <p className="style3">{user.username}</p>
+                <p className="style3">{`${user.firstName} ${user.lastName}`}</p>
                 <div>
                   <Link
                     className="gridItem2"
-                    to={`/tweeter/user2/${index.username}`}
+                    to={`/tweeter/user2/${user.username}`}
                   >
                     View Profile
                   </Link>
@@ -63,8 +72,7 @@ const SearchUsers = () => {
               <br></br>
             </div>
           )
-        }
-      })} */}
+        })}
     </div>
   )
 }
