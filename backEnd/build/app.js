@@ -11,6 +11,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const connectionString = 'mongodb://localhost:27017/tweeter';
 mongoose_1.default.connect(connectionString).then(() => console.log('database connection successful!'), err => console.log('Error connecting to the database', err));
 const app = (0, express_1.default)();
+const port = process.env.PORT || 3000;
 app.use((0, morgan_1.default)('dev'));
 const cors = require('cors');
 app.use(cors());
@@ -22,4 +23,4 @@ app.use('/users', userRoutes_1.default);
 app.use((req, res, next) => {
     res.status(404).end();
 });
-app.listen(3000);
+app.listen(port, () => console.log(`Listening on port ${port}`));

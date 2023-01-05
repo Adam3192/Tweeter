@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 import { useNavigate, Link } from 'react-router-dom'
 import UserContext from '../contexts/UserContext'
 
-const SearchUsers = () => {
+const SearchUsersBackup = () => {
   let navigate = useNavigate()
   let { searchUsers } = useContext(UserContext)
   let [users, setUsers] = useState(null)
@@ -69,4 +69,4 @@ const SearchUsers = () => {
   )
 }
 
-export default SearchUsers
+export default SearchUsersBackup

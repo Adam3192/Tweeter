@@ -3,6 +3,8 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import SearchUsers from './components/SearchUsers'
+import SearchUsersBackup from './components/SearchUsersBackup'
+import SearchUsersBackup2 from './components/SearchUsersBackup2'
 import TweetList from './components/TweetList'
 import NewTweet from './components/NewTweet'
 import UserProfile from './components/UserProfile'
@@ -30,7 +32,7 @@ function App() {
             <Route exact path="/" element={<TweetList />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/search" element={<SearchUsers />} />
+            <Route path="/search" element={<SearchUsersBackup2 />} />
             <Route path="/tweeter/new" element={<NewTweet />} />
             <Route path="/tweeter/user/:name" element={<UserProfile />} />
             <Route path="/tweeter/user2/:name" element={<UserProfile2 />} />

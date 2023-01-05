@@ -11,6 +11,7 @@ mongoose.connect(connectionString).then(
     err => console.log('Error connecting to the database', err));
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(morgan('dev'));
 
@@ -28,4 +29,4 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     res.status(404).end();
 });
 
-app.listen(3000);
+app.listen(port, () => console.log(`Listening on port ${port}`));
