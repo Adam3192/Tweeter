@@ -59,7 +59,7 @@ const NewPost = () => {
       <form onSubmit={handleSubmit}>
         <div className="container5">
           <textarea
-            className="style1"
+            className='newTweetStyle'
             placeholder="New tweet"
             type="text"
             name="message"

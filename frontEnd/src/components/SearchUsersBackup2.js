@@ -32,7 +32,7 @@ const SearchUsersBackup2 = () => {
       <form>
         <div className="container5">
           <textarea
-            className="style1"
+          className='styleTest'
             type="text"
             name="message"
             onChange={handleChange}

@@ -2,3 +2,8 @@
  padding-top: 6vh;
  padding-left: 9vw;
 }
+
+.styleTest {
+ border-radius: 5px !important;
+ width: 300px !important;
+}

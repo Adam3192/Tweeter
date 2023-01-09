@@ -46,7 +46,7 @@ const SignUp = () => {
             <span className='pad6'>State  </span>
             <input placeholder="Enter State" type="text" name="state" value={state} onChange={e => setState(e.target.value)} />
             <br /><br></br>
-            <button>Sign Up</button>
+            <button className='style1'>Sign Up</button>
         </form>
     )
 };
