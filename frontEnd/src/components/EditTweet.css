@@ -4,3 +4,10 @@
  padding-top: 5vh;
  padding-left: 7vw;
 }
+
+.editTweet {
+ width: 325px;
+ height: 70px;
+ border-radius: 5px;
+ border: 1px solid black;
+}

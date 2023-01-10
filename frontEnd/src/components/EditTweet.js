@@ -69,7 +69,7 @@ const EditTweet = () => {
       <form onSubmit={handleSubmit}>
         <div className="container1">
           <textarea
-            className="style1"
+            className='editTweet'
             type="text"
             name="message"
             value={editedTweet.message}
